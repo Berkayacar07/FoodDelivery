@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.mobil.fooddelivery">
+    <!-- Add Internet Permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,10 +13,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDelivery">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".Restaurant.RestaurantForgotPassword"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name=".Restaurant.RestaurantLogInActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Customer.CustomerForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Restaurant.RestaurantMainPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.CustomerMainPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.CustomerSignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.CustomerLogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
