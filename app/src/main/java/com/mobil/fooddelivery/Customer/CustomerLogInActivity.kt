@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.mobil.fooddelivery.Restaurant.RestaurantLogInActivity
+import com.mobil.fooddelivery.Restaurant.restaurantEmail
 import com.mobil.fooddelivery.databinding.ActivityCustomerLogInBinding
 
 class CustomerLogInActivity : AppCompatActivity() {
@@ -30,8 +31,8 @@ class CustomerLogInActivity : AppCompatActivity() {
         binding = ActivityCustomerLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        actionBar = supportActionBar!!
-    //    actionBar.title = "Login"
+        actionBar = supportActionBar!!
+        actionBar.title = "Login"
 
 
         progressDialog = ProgressDialog(this)

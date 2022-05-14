@@ -23,8 +23,8 @@ class CustomerMainPageActivity : AppCompatActivity() {
         binding = ActivityCustomerMainPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //actionBar = supportActionBar!!
-        //actionBar.title = "Profile"
+        actionBar = supportActionBar!!
+        actionBar.title = "Profile"
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()

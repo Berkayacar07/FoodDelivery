@@ -1,37 +1,59 @@
 package com.mobil.fooddelivery.Restaurant
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
-import com.mobil.fooddelivery.databinding.ActivityRestaurantMainPageBinding
+import com.mobil.fooddelivery.R
 
 
 class RestaurantMainPageActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityRestaurantMainPageBinding
-
-    private lateinit var actionBar: ActionBar
 
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRestaurantMainPageBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        //actionBar = supportActionBar!!
-        //actionBar.title = "Profile"
+        setContentView(R.layout.activity_restaurant_main_page)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        binding.textViewRestaurantMainPageInformation.text = "Restaurant Mobile"
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainerView,RestaurantFoodFragment())
+        fragmentTransaction.commit()
+
     }
 
-    fun logOut (view : View) {
-        firebaseAuth.signOut()
-        startActivity(Intent(this,RestaurantLogInActivity::class.java))
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        val menuInflater = menuInflater
+        menuInflater.inflate(R.menu.add_food, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (item.itemId == R.id.add_food_item) {
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentContainerView,RestaurantAddFoodFragment())
+            fragmentTransaction.commit()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun home (view: View) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainerView,RestaurantFoodFragment())
+        fragmentTransaction.commit()
+    }
+
+    fun others (view: View) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainerView,RestaurantOthersFragment())
+        fragmentTransaction.commit()
     }
 
 

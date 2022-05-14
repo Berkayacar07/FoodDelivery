@@ -3,33 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ECDEDE"
-    tools:context=".Restaurant.RestaurantMainPageActivity">
+    android:background="@drawable/fooddelivery"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView_RestaurantMainPage_Information"
-        android:layout_width="238dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="288dp"
-        android:layout_marginBottom="24dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/button_Restaurant_MainPage_LogOut"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/imageView_restaurant_food_photo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="92dp"
+        android:onClick="home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/ic_baseline_home_24" />
 
-    <Button
-        android:id="@+id/button_Restaurant_MainPage_LogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
-        android:onClick="logOut"
-        android:text="Log Out"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="104dp"
+        android:onClick="others"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_line" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="409dp"
+        android:layout_height="669dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_restaurant_food_photo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_RestaurantMainPage_Information" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/navigation_graph_restaurant" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,14 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2285" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2095" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2285" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_line.xml" value="0.2095" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_search.xml" value="0.2095" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_forgot_password.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_log_in.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_main_page.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_sign_up.xml" value="0.2223731884057971" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_main_activitya.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_forgot_password.xml" value="0.2223731884057971" />
-        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_log_in.xml" value="0.2223731884057971" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_log_in.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_main_page.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_sign_up.xml" value="0.2223731884057971" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_food_page_restaurant.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_add_food.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_food.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_others.xml" value="0.1" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/gavat.xml" value="0.25" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/menu/add_food.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
@@ -19,5 +32,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.25416666666666665" />
+      </ProjectState>
+    </option>
   </component>
 </project>

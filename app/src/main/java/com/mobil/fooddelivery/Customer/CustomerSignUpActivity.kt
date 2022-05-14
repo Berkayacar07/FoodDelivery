@@ -31,10 +31,10 @@ class CustomerSignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-       /* actionBar = supportActionBar!!
+        actionBar = supportActionBar!!
         actionBar.title = "Sign Up"
         actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.setDisplayShowHomeEnabled(true)*/
+        actionBar.setDisplayShowHomeEnabled(true)
 
 
         progressDialog = ProgressDialog(this)
