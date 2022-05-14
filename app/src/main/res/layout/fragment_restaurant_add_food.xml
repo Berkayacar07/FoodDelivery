@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fooddelivery"
+    tools:context=".Restaurant.RestaurantAddFoodFragment">
+
+
+    <ImageView
+        android:id="@+id/imageView_restaurant_food_photo"
+        android:layout_width="315dp"
+        android:layout_height="179dp"
+        android:onClick="selectImage"
+        android:src="@drawable/gorselsecimi"
+        app:layout_constraintBottom_toTopOf="@+id/editText_restaurant_food_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_restaurant_food_name"
+        android:layout_width="299dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Enter Food Name"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/editText_restaurant_food_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_restaurant_food_photo" />
+
+    <EditText
+        android:id="@+id/editText_restaurant_food_price"
+        android:layout_width="299dp"
+        android:layout_height="106dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Enter Food Price"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/button_restaurant_add_food"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_restaurant_food_name" />
+
+    <Button
+        android:id="@+id/button_restaurant_add_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addFood"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_restaurant_food_price" />
+</androidx.constraintlayout.widget.ConstraintLayout>
