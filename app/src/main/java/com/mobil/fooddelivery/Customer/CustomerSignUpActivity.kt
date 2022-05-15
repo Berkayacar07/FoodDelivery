@@ -2,15 +2,19 @@ package com.mobil.fooddelivery.Customer
 
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.mobil.fooddelivery.databinding.ActivityCustomerSignUpBinding
+
 
 class CustomerSignUpActivity : AppCompatActivity() {
 
@@ -22,6 +26,8 @@ class CustomerSignUpActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private var email = ""
     private var password = ""
+    private var fullName = ""
+    private lateinit var database: DatabaseReference
 
 
 
@@ -29,6 +35,7 @@ class CustomerSignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCustomerSignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.com/")
 
 
         actionBar = supportActionBar!!
@@ -43,19 +50,15 @@ class CustomerSignUpActivity : AppCompatActivity() {
         progressDialog.setCanceledOnTouchOutside(false)
 
         firebaseAuth = FirebaseAuth.getInstance()
-
-
-
-
-
-
     }
 
     fun save (view: View) {
-        var fullName = binding.editTextCustomerSignUpFullName.text.toString().trim()
+        fullName = binding.editTextCustomerSignUpFullName.text.toString().trim()
         email = binding.editTextCustomerSignUpEmail.text.toString().trim()
         password = binding.editTextCustomerSignUpPassword.text.toString().trim()
         var confirmPassword = binding.editTextCustomerSignUpConfirmPassword.text.toString().trim()
+
+
 
         when {
             mailControl(email) -> {
@@ -76,23 +79,45 @@ class CustomerSignUpActivity : AppCompatActivity() {
             password != confirmPassword -> {
                 Toast.makeText(applicationContext, "Passwords not same", Toast.LENGTH_LONG).show()
             }
-            else -> {
-                progressDialog.show()
-                firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnSuccessListener {
-                        progressDialog.dismiss()
-                        val firebaseUser = firebaseAuth.currentUser
-                        val email = firebaseUser!!.email
-                        Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show()
 
-                        startActivity(Intent(this,CustomerLogInActivity::class.java))
-                        finish()
+            else -> {
+                database.child("Customer").addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.hasChild(fullName)){
+                            Toast.makeText(applicationContext,"Fullname is already registered",
+                                Toast.LENGTH_LONG).show()
+
+                        }else{
+                            progressDialog.show()
+
+                            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                                .addOnSuccessListener {
+                                    progressDialog.dismiss()
+
+                                    val firebaseUser = firebaseAuth.currentUser
+                                    val email = firebaseUser!!.email
+                                    database.child("Customer").child(fullName).child("email").setValue(email)
+                                    database.child("Customer").child(fullName).child("password").setValue(password)
+                                    Toast.makeText(applicationContext, "Registration Successful", Toast.LENGTH_LONG).show()
+
+                                    startActivity(Intent(applicationContext,CustomerLogInActivity::class.java))
+                                    firebaseAuth.signOut()
+                                    finish()
+                                }
+                                .addOnFailureListener {e->
+                                    progressDialog.dismiss()
+                                    Toast.makeText(applicationContext,"Signup failed due to ${e.message}", Toast.LENGTH_SHORT).show()
+                                    println(e.message)
+                                }
+                        }
                     }
-                    .addOnFailureListener {e->
-                        progressDialog.dismiss()
-                        Toast.makeText(this,"Signup failed due to ${e.message}", Toast.LENGTH_SHORT).show()
-                        println(e.message)
+
+                    override fun onCancelled(error: DatabaseError) {
+
                     }
+
+                })
+
             }
         }
     }

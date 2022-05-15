@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
+import com.mobil.fooddelivery.R
+import com.mobil.fooddelivery.Restaurant.RestaurantFoodFragment
+import com.mobil.fooddelivery.Restaurant.RestaurantOthersFragment
 import com.mobil.fooddelivery.databinding.ActivityCustomerMainPageBinding
 
 
@@ -31,11 +34,6 @@ class CustomerMainPageActivity : AppCompatActivity() {
 
     }
 
-    fun logOut (view : View) {
-        firebaseAuth.signOut()
-        checkUser()
-    }
-
     private fun checkUser() {
 
         val firebaseUser = firebaseAuth.currentUser
@@ -43,11 +41,26 @@ class CustomerMainPageActivity : AppCompatActivity() {
         if(firebaseUser != null) {
 
             val email = firebaseUser.email
-
-            binding.textViewCustomerMainPageInformation.text = email
         }else {
             startActivity(Intent(this,CustomerLogInActivity::class.java))
             finish()
         }
+    }
+
+    fun customerHome(view: View){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentCustomerContainerView, CustomerFoodFragment())
+        fragmentTransaction.commit()
+    }
+    fun customerBasket(view: View){
+
+    }
+    fun customerSearch(view: View){
+
+    }
+    fun customerLine(view: View){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentCustomerContainerView, CustomerOthersFragment())
+        fragmentTransaction.commit()
     }
 }

@@ -1,15 +1,17 @@
 package com.mobil.fooddelivery.Restaurant
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.mobil.fooddelivery.databinding.FragmentRestaurantProfileBinding
+import com.mobil.fooddelivery.R
+
+
 
 
 class RestaurantProfileFragment : Fragment() {
-    private lateinit var binding: FragmentRestaurantProfileBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,24 +22,8 @@ class RestaurantProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRestaurantProfileBinding.inflate(inflater, container, false)
-        return binding.root
-
-
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_restaurant_profile, container, false)
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.editTextRestaurantPassword.setText(restaurantPassword)
-        binding.editTextRestaurantAddress.setText(restaurantAddress)
-        binding.editTextRestaurantName.setText(restaurantName)
-        binding.updateButtonProfileRestaurant.setOnClickListener {
-            update(it)
-        }
-
-    }
-
-    fun update(view: View){
-
-    }
-
 
 }

@@ -32,7 +32,5 @@ class CustomerForgotPassword : AppCompatActivity() {
                         task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
                 }
             }
-
-
     }
 }

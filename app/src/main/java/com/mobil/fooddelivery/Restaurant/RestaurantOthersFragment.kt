@@ -1,13 +1,12 @@
 package com.mobil.fooddelivery.Restaurant
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import com.mobil.fooddelivery.R
 import com.mobil.fooddelivery.databinding.FragmentRestaurantOthersBinding
 
 
@@ -26,6 +25,7 @@ class RestaurantOthersFragment : Fragment() {
         return binding.root
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.restaurantProfileButton.setOnClickListener {
@@ -36,12 +36,13 @@ class RestaurantOthersFragment : Fragment() {
         }
     }
 
-    fun profileOnClick(view:View){
+    fun profileOnClick (view:View){
         val fragment2 = RestaurantProfileFragment()
         val fragmentManager = fragmentManager
         val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(com.mobil.fooddelivery.R.id.fragmentContainerView, fragment2)
+        fragmentTransaction.replace(R.id.fragmentContainerView, fragment2)
         fragmentTransaction.commit()
+
     }
     fun logOutOnClick(view: View){
         activity?.let{

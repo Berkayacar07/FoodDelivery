@@ -11,6 +11,7 @@
         android:id="@+id/button_Customer_NextToRestaurantPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
         android:layout_marginBottom="664dp"
         android:background="@drawable/button_background"
         android:onClick="restaurant"
@@ -19,7 +20,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/userImage_Customer_LogIn"
