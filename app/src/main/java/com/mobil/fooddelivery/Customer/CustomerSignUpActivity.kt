@@ -98,6 +98,7 @@ class CustomerSignUpActivity : AppCompatActivity() {
                                     val email = firebaseUser!!.email
                                     database.child("Customer").child(fullName).child("email").setValue(email)
                                     database.child("Customer").child(fullName).child("password").setValue(password)
+                                    database.child("Customer").child(fullName).child("address").setValue("")
                                     Toast.makeText(applicationContext, "Registration Successful", Toast.LENGTH_LONG).show()
 
                                     startActivity(Intent(applicationContext,CustomerLogInActivity::class.java))

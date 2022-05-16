@@ -54,7 +54,11 @@ class CustomerOthersFragment : Fragment() {
 
     }
     fun customerAddressOnClick(view: View){
-
+        val fragment2 = CustomerAddressFragment()
+        val fragmentManager = fragmentManager
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentCustomerContainerView, fragment2)
+        fragmentTransaction.commit()
     }
     fun customerOrdersHistoryOnClick(view: View){
 
