@@ -12,9 +12,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.mobil.fooddelivery.R
 import com.mobil.fooddelivery.databinding.FragmentCustomerAddressBinding
-import com.mobil.fooddelivery.databinding.FragmentCustomerProfileBinding
 
 private lateinit var binding: FragmentCustomerAddressBinding
 private lateinit var firebaseAuth: FirebaseAuth
@@ -44,13 +42,21 @@ class CustomerAddressFragment : Fragment() {
         database = Firebase.database.reference
         database.child("Customer").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for(i in snapshot.children){
-                    fullName =i.key.toString()
-                    address1 =i.child("address1").getValue().toString()
-                    address2 =i.child("address2").getValue().toString()
+                for (i in snapshot.children) {
+                    fullName = i.key.toString()
+                    address1 = i.child("address1").getValue().toString()
+                    address2 = i.child("address2").getValue().toString()
 
-                    binding.editTextAddress.setText(address1)
-                    binding.editTextAddress2.setText(address2)
+                    if (address1.equals("null")) {
+                        binding.editTextAddress.setText("")
+                    } else {
+                        binding.editTextAddress.setText(address1)
+                    }
+                    if (address2.equals("null")) {
+                        binding.editTextAddress2.setText("")
+                    } else {
+                        binding.editTextAddress.setText(address2)
+                    }
                 }
             }
 
@@ -71,11 +77,20 @@ class CustomerAddressFragment : Fragment() {
     fun updateData(){
         database = Firebase.database.getReference("Customer")
 
-        database.child(fullName).child("address1").
-        setValue(binding.editTextAddress.text.toString().trim())
+        if(binding.editTextAddress.text.toString() == ""){
+            database.child(fullName).child("address1").removeValue()
+        }else{
+            database.child(fullName).child("address1").
+            setValue(binding.editTextAddress.text.toString().trim())
+        }
+        if(binding.editTextAddress2.text.toString() == ""){
+            database.child(fullName).child("address2").removeValue()
+        }else{
+            database.child(fullName).child("address2").
+            setValue(binding.editTextAddress2.text.toString().trim())
+        }
 
-        database.child(fullName).child("address2").
-        setValue(binding.editTextAddress2.text.toString().trim())
+
     }
 
 }

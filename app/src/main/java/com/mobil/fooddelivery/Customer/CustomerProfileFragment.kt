@@ -59,8 +59,6 @@ class CustomerProfileFragment : Fragment() {
                     binding.editTextCustomerFullName.setText(i.key)
                 }
             }
-
-
             override fun onCancelled(error: DatabaseError) {
             }
         })
