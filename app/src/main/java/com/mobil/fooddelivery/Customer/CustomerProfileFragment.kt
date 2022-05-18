@@ -1,5 +1,6 @@
 package com.mobil.fooddelivery.Customer
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -43,20 +44,24 @@ class CustomerProfileFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         database = Firebase.database.reference
 
-        database.child("Customer").addListenerForSingleValueEvent(object : ValueEventListener {
+        database.child("Customer").
+        addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(i in snapshot.children){
                      fullName =i.child("fullname").getValue().toString()
                      email =i.child("email").getValue().toString()
                      password =i.child("password").getValue().toString()
-
-                    binding.editTextCustomerPassword.setText(password)
-                    binding.editTextCustomerEmail.setText(email)
-                    binding.editTextCustomerFullName.setText(i.key)
+                    if(firebaseAuth.currentUser?.email.toString() ==email){
+                        binding.editTextCustomerPassword.setText(password)
+                        println(i.key)
+                        binding.textViewCustomerEmail.setText(email)
+                        binding.textViewCustomerFullName.setText(i.key)
+                    }
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -66,27 +71,25 @@ class CustomerProfileFragment : Fragment() {
         binding.buttonCustomerProfileUpdate.setOnClickListener {
             customerProfileUpdateButton(it)
         }
-
-
     }
 
-        fun customerProfileUpdateButton(view: View) {
-            updateData()
-            val fragment2 = CustomerOthersFragment()
-            val fragmentManager = fragmentManager
-            val fragmentTransaction = fragmentManager!!.beginTransaction()
-            fragmentTransaction.replace(R.id.fragmentCustomerContainerView, fragment2)
-            fragmentTransaction.commit()
+    fun customerProfileUpdateButton(view: View) {
+        updateData()
+        val fragment2 = CustomerOthersFragment()
+        val fragmentManager = fragmentManager
+        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentCustomerContainerView, fragment2)
+        fragmentTransaction.commit()
 
-        }
+    }
     fun updateData(){
         database = Firebase.database.getReference("Customer")
         var user = mapOf<String,String>(
-            "email" to binding.editTextCustomerEmail.toString(),
+            "email" to binding.textViewCustomerEmail.toString(),
             "password" to binding.editTextCustomerPassword.toString()
-
         )
-        database.child(binding.editTextCustomerFullName.text.toString()).child("password").
+        database.child(binding.textViewCustomerFullName.text.toString()).child("password").
         setValue(binding.editTextCustomerPassword.text.toString().trim())
+        firebaseAuth.currentUser?.updatePassword(binding.editTextCustomerPassword.text.toString().trim())
     }
     }

@@ -18,6 +18,7 @@ private lateinit var binding: FragmentCustomerAddressBinding
 private lateinit var firebaseAuth: FirebaseAuth
 private lateinit var database: DatabaseReference
 var fullName=""
+var email=""
 var address1=""
 var address2=""
 
@@ -43,20 +44,25 @@ class CustomerAddressFragment : Fragment() {
         database.child("Customer").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (i in snapshot.children) {
+
                     fullName = i.key.toString()
+                    email = i.child("email").getValue().toString()
                     address1 = i.child("address1").getValue().toString()
                     address2 = i.child("address2").getValue().toString()
+                    if (firebaseAuth.currentUser?.email.toString() == email) {
+                        if (address1.equals("null")) {
+                            binding.editTextAddress.setText("")
+                        } else {
+                            binding.editTextAddress.setText(address1)
+                        }
+                        if (address2.equals("null")) {
+                            binding.editTextAddress2.setText("")
+                        } else {
+                            binding.editTextAddress2.setText(address2)
+                        }
+                        break
+                    }
 
-                    if (address1.equals("null")) {
-                        binding.editTextAddress.setText("")
-                    } else {
-                        binding.editTextAddress.setText(address1)
-                    }
-                    if (address2.equals("null")) {
-                        binding.editTextAddress2.setText("")
-                    } else {
-                        binding.editTextAddress.setText(address2)
-                    }
                 }
             }
 
@@ -77,19 +83,21 @@ class CustomerAddressFragment : Fragment() {
     fun updateData(){
         database = Firebase.database.getReference("Customer")
 
-        if(binding.editTextAddress.text.toString() == ""){
-            database.child(fullName).child("address1").removeValue()
-        }else{
-            database.child(fullName).child("address1").
-            setValue(binding.editTextAddress.text.toString().trim())
-        }
-        if(binding.editTextAddress2.text.toString() == ""){
-            database.child(fullName).child("address2").removeValue()
-        }else{
-            database.child(fullName).child("address2").
-            setValue(binding.editTextAddress2.text.toString().trim())
-        }
-
+        email=firebaseAuth.currentUser?.email.toString()
+        println(fullName)
+        println(email)
+            if (binding.editTextAddress.text.toString() == "") {
+                database.child(fullName).child("address1").removeValue()
+            } else {
+                database.child(fullName).child("address1")
+                    .setValue(binding.editTextAddress.text.toString().trim())
+            }
+            if (binding.editTextAddress2.text.toString() == "") {
+                database.child(fullName).child("address2").removeValue()
+            } else {
+                database.child(fullName).child("address2")
+                    .setValue(binding.editTextAddress2.text.toString().trim())
+            }
 
     }
 

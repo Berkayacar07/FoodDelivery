@@ -14,12 +14,20 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.mobil.fooddelivery.Customer.CustomerLogInActivity
 import com.mobil.fooddelivery.databinding.FragmentRestaurantAddFoodBinding
 import java.io.ByteArrayOutputStream
 
@@ -28,9 +36,11 @@ class RestaurantAddFoodFragment : Fragment() {
 
     private lateinit var binding: FragmentRestaurantAddFoodBinding
     private var mStorageRef: StorageReference? = null
-    private lateinit var progressDialog : ProgressDialog
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseStorage : FirebaseStorage
+
+    private lateinit var database: DatabaseReference
+
     var selectedImage : Uri? = null
     var selectedBitmap : Bitmap? = null
 
@@ -38,11 +48,9 @@ class RestaurantAddFoodFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mStorageRef = FirebaseStorage.getInstance().reference
+        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.comş/")
 
-        progressDialog = ProgressDialog(this.context)
-        progressDialog.setTitle("Please Wait")
-        progressDialog.setMessage("Logging In...")
-        progressDialog.setCanceledOnTouchOutside(false)
+
 
     }
 
@@ -69,6 +77,11 @@ class RestaurantAddFoodFragment : Fragment() {
 
         val foodName=binding.editTextRestaurantFoodName.text.toString()
         val foodPrice=binding.editTextRestaurantFoodPrice.text.toString()
+        val selectedOption = binding.radioGroupAddFood.checkedRadioButtonId
+
+        val button: Button = binding.radioGroupAddFood.findViewById(selectedOption)
+
+        val foodCategory = button.text
 
 
         if(selectedBitmap!=null){
@@ -84,7 +97,123 @@ class RestaurantAddFoodFragment : Fragment() {
 
             myStorageRef.putBytes(byteArray)
                 .addOnSuccessListener { // if the upload is successful hide the progress dialog
-                    progressDialog.dismiss()
+
+
+                    when (foodCategory) {
+                        "Soup" -> {
+
+                            database.child("Soup").addListenerForSingleValueEvent(object :
+                                ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    if (snapshot.hasChild(foodName)){
+                                        Toast.makeText(context,"Soup is already added",
+                                            Toast.LENGTH_LONG).show()
+
+                                    }else{
+                                        database.child("Soup").child(foodName).child("category").setValue(foodCategory)
+                                        database.child("Soup").child(foodName).child("name").setValue(foodName)
+                                        database.child("Soup").child(foodName).child("price").setValue(foodPrice)
+                                    }
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+                            })
+
+                        }
+                        "Main Course" -> {
+
+                            database.child("MainCourse").addListenerForSingleValueEvent(object :
+                                ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    if (snapshot.hasChild(foodName)){
+                                        Toast.makeText(context,"Main Course is already added",
+                                            Toast.LENGTH_LONG).show()
+
+                                    }else{
+                                        database.child("MainCourse").child(foodName).child("category").setValue(foodCategory)
+                                        database.child("MainCourse").child(foodName).child("name").setValue(foodName)
+                                        database.child("MainCourse").child(foodName).child("price").setValue(foodPrice)
+                                    }
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+                            })
+
+                        }
+                        "Dessert" -> {
+
+                            database.child("Dessert").addListenerForSingleValueEvent(object :
+                                ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    if (snapshot.hasChild(foodName)){
+                                        Toast.makeText(context,"Dessert is already added",
+                                            Toast.LENGTH_LONG).show()
+
+                                    }else{
+                                        database.child("Dessert").child(foodName).child("category").setValue(foodCategory)
+                                        database.child("Dessert").child(foodName).child("name").setValue(foodName)
+                                        database.child("Dessert").child(foodName).child("price").setValue(foodPrice)
+                                    }
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+                            })
+
+                        }
+                        "Drink" -> {
+
+
+                            database.child("Drink").addListenerForSingleValueEvent(object :
+                                ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    if (snapshot.hasChild(foodName)){
+                                        Toast.makeText(context,"Drink is already added",
+                                            Toast.LENGTH_LONG).show()
+
+                                    }else{
+                                        database.child("Drink").child(foodName).child("category").setValue(foodCategory)
+                                        database.child("Drink").child(foodName).child("name").setValue(foodName)
+                                        database.child("Drink").child(foodName).child("price").setValue(foodPrice)
+                                    }
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+                            })
+
+                        }
+                    }
+
+                    database.child("Food").addListenerForSingleValueEvent(object :
+                        ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.hasChild(foodName)){
+                                Toast.makeText(context,"Food is already added",
+                                    Toast.LENGTH_LONG).show()
+
+                            }else{
+                                database.child("Food").child(foodName).child("category").setValue(foodCategory)
+                                database.child("Food").child(foodName).child("name").setValue(foodName)
+                                database.child("Food").child(foodName).child("price").setValue(foodPrice)
+
+                                println(4)
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+
+                        }
+                    })
+
+
+
                     // and display a success toast
                     Toast.makeText(
                         this.context,
@@ -93,7 +222,6 @@ class RestaurantAddFoodFragment : Fragment() {
                     ).show()
                 }
                 .addOnFailureListener { exception -> // if the upload is not successful hide the progress dialog
-                    progressDialog.dismiss()
                     // and display an error toast
                     Toast.makeText(
                         this.context,
@@ -103,7 +231,6 @@ class RestaurantAddFoodFragment : Fragment() {
                 }.addOnProgressListener { taskSnapshot -> //calculating progress percentage
                     val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount
                     //displaying percentage in progress dialog
-                    progressDialog.setMessage("Uploading " + progress.toInt() + "%...")
                 }
         }
 
@@ -194,4 +321,7 @@ class RestaurantAddFoodFragment : Fragment() {
 
         return Bitmap.createScaledBitmap(bitmap,width,height,true)
     }
+
+
+
 }

@@ -51,6 +51,9 @@ class CustomerSignUpActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
     }
+    override fun onBackPressed() {
+        startActivity(Intent(this,CustomerLogInActivity::class.java))
+    }
 
     fun save (view: View) {
         fullName = binding.editTextCustomerSignUpFullName.text.toString().trim()

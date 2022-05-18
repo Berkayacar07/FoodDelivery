@@ -33,4 +33,7 @@ class CustomerForgotPassword : AppCompatActivity() {
                 }
             }
     }
+    override fun onBackPressed() {
+        startActivity(Intent(this,CustomerLogInActivity::class.java))
+    }
 }
