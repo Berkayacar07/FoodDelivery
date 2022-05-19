@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,43 +21,47 @@
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_home_24"></ImageView>
+        app:srcCompat="@drawable/ic_baseline_home_24"
+        tools:ignore="SpeakableTextPresentCheck"></ImageView>
 
     <ImageView
         android:id="@+id/customer_basket"
-        android:onClick="customerBasket"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="671dp"
         android:layout_marginEnd="28dp"
+        android:onClick="customerBasket"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/customer_line"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_basket"></ImageView>
+        app:srcCompat="@drawable/ic_basket"
+        tools:ignore="SpeakableTextPresentCheck"></ImageView>
 
     <ImageView
         android:id="@+id/customer_search"
-        android:onClick="customerSearch"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="671dp"
         android:layout_marginEnd="28dp"
+        android:onClick="customerSearch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/customer_basket"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_search"></ImageView>
+        app:srcCompat="@drawable/ic_search"
+        tools:ignore="SpeakableTextPresentCheck"></ImageView>
 
     <ImageView
         android:id="@+id/customer_line"
-        android:onClick="customerLine"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="671dp"
         android:layout_marginEnd="50dp"
+        android:onClick="customerLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_line"></ImageView>
+        app:srcCompat="@drawable/ic_line"
+        tools:ignore="SpeakableTextPresentCheck"></ImageView>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentCustomerContainerView"

@@ -25,7 +25,7 @@ class CustomerMainPageActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         actionBar = supportActionBar!!
-        actionBar.title = "Profile"
+        actionBar.title = "Foods"
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
@@ -51,7 +51,10 @@ class CustomerMainPageActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
     fun customerBasket(view: View){
-
+        val intent = Intent(applicationContext, CustomerCartActivity::class.java)
+        intent.putExtra("activity","A")
+        startActivity(intent)
+        finish()
     }
     fun customerSearch(view: View){
 

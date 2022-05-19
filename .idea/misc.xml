@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2285" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/button_background.xml" value="0.175" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/button_background_cart.xml" value="0.175" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2095" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_basket.xml" value="0.2285" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2285" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_line.xml" value="0.2095" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_search.xml" value="0.2095" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_add_cart.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_cart.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_forgot_password.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_log_in.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_main_page.xml" value="0.1" />
