@@ -3,7 +3,7 @@
     package="com.mobil.fooddelivery">
     <!-- Add Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDelivery">
         <activity
-            android:name=".Restaurant.RestaurantLogInActivity"
+            android:name=".Restaurant.RestaurantUpdateFoodActivity"
             android:exported="false" />
         <activity
-            android:name=".Restaurant.RestaurantForgotPassword"
+            android:name=".Restaurant.RestaurantLogInActivity"
             android:exported="false" />
         <activity
             android:name=".Customer.CustomerForgotPassword"

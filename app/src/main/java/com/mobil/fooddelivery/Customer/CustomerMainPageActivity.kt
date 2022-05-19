@@ -7,8 +7,6 @@ import android.view.View
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
 import com.mobil.fooddelivery.R
-import com.mobil.fooddelivery.Restaurant.RestaurantFoodFragment
-import com.mobil.fooddelivery.Restaurant.RestaurantOthersFragment
 import com.mobil.fooddelivery.databinding.ActivityCustomerMainPageBinding
 
 

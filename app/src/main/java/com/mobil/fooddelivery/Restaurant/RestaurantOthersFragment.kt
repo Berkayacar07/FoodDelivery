@@ -6,15 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.auth.FirebaseAuth
 import com.mobil.fooddelivery.R
 import com.mobil.fooddelivery.databinding.FragmentRestaurantOthersBinding
 
 
 class RestaurantOthersFragment : Fragment() {
+
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var binding: FragmentRestaurantOthersBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
     }
 
     override fun onCreateView(
@@ -36,7 +42,7 @@ class RestaurantOthersFragment : Fragment() {
         }
     }
 
-    fun profileOnClick (view:View){
+    private fun profileOnClick (view:View){
         val fragment2 = RestaurantProfileFragment()
         val fragmentManager = fragmentManager
         val fragmentTransaction = fragmentManager!!.beginTransaction()
@@ -44,10 +50,11 @@ class RestaurantOthersFragment : Fragment() {
         fragmentTransaction.commit()
 
     }
-    fun logOutOnClick(view: View){
+    private fun logOutOnClick(view: View){
         activity?.let{
             val intent = Intent (it, RestaurantLogInActivity::class.java)
             it.startActivity(intent)
+
         }
     }
 }

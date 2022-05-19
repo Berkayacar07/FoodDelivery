@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.mobil.fooddelivery.Customer.CustomerLogInActivity
 import com.mobil.fooddelivery.databinding.ActivityRestaurantLogInBinding
+
 
 const val restaurantEmail = "colak4364@gmail.com"
 var restaurantPassword = "admin"
@@ -18,16 +18,18 @@ class RestaurantLogInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRestaurantLogInBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
     }
 
     fun login(view: View) {
-        var email = binding.editTextRestaurantLogInEmail.text.toString().trim()
-        var password = binding.editTextRestaurantLogInPassword.text.toString().trim()
+        val email = binding.editTextRestaurantLogInEmail.text.toString().trim()
+        val password = binding.editTextRestaurantLogInPassword.text.toString().trim()
 
 
         if (email == restaurantEmail) {
@@ -51,23 +53,4 @@ class RestaurantLogInActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-    fun forgotPassword (view : View) {
-        val intent = Intent (applicationContext, RestaurantForgotPassword::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    fun changeName (name : String) {
-        restaurantName = name
-    }
-
-    fun changePassword (password : String) {
-        restaurantPassword =  password
-    }
-
-    fun changeAddress (address : String) {
-        restaurantAddress = address
-    }
-
 }

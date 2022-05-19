@@ -18,16 +18,19 @@
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_log_in.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_main_page.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_sign_up.xml" value="0.2223731884057971" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_restaurant_update_food.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_customer_address.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_customer_food.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_customer_others.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_customer_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_food_page_restaurant.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_add_food.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_food.xml" value="0.1" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_food.xml" value="0.176" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_others.xml" value="0.1" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/fragment_restaurant_profile.xml" value="0.264" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/gavat.xml" value="0.25" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/recycler_row_customer_food.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/recycler_row_restaurant_food.xml" value="0.1" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/menu/add_food.xml" value="0.25416666666666665" />
       </map>
     </option>

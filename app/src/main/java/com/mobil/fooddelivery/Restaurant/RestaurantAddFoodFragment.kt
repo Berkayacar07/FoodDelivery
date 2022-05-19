@@ -2,7 +2,6 @@ package com.mobil.fooddelivery.Restaurant
 
 import android.Manifest
 import android.app.Activity
-import android.app.ProgressDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -28,6 +27,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.mobil.fooddelivery.Customer.CustomerLogInActivity
+import com.mobil.fooddelivery.R
 import com.mobil.fooddelivery.databinding.FragmentRestaurantAddFoodBinding
 import java.io.ByteArrayOutputStream
 
@@ -48,7 +48,7 @@ class RestaurantAddFoodFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mStorageRef = FirebaseStorage.getInstance().reference
-        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.comş/")
+        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.com/")
 
 
 
@@ -134,7 +134,7 @@ class RestaurantAddFoodFragment : Fragment() {
                                     }else{
                                         database.child("MainCourse").child(foodName).child("category").setValue(foodCategory)
                                         database.child("MainCourse").child(foodName).child("name").setValue(foodName)
-                                        database.child("MainCourse").child(foodName).child("price").setValue(foodPrice)
+                                        database.child("MainCourse").child(foodName).child("price").setValue("\$$foodPrice")
                                     }
                                 }
 
@@ -203,7 +203,6 @@ class RestaurantAddFoodFragment : Fragment() {
                                 database.child("Food").child(foodName).child("name").setValue(foodName)
                                 database.child("Food").child(foodName).child("price").setValue(foodPrice)
 
-                                println(4)
                             }
                         }
 
@@ -220,6 +219,13 @@ class RestaurantAddFoodFragment : Fragment() {
                         "File uploaded!",
                         Toast.LENGTH_LONG
                     ).show()
+
+                    val fragment2 = RestaurantFoodFragment()
+                    val fragmentManager = fragmentManager
+                    val fragmentTransaction = fragmentManager!!.beginTransaction()
+                    fragmentTransaction.replace(R.id.fragmentContainerView, fragment2)
+                    fragmentTransaction.commit()
+
                 }
                 .addOnFailureListener { exception -> // if the upload is not successful hide the progress dialog
                     // and display an error toast
@@ -321,7 +327,5 @@ class RestaurantAddFoodFragment : Fragment() {
 
         return Bitmap.createScaledBitmap(bitmap,width,height,true)
     }
-
-
 
 }
