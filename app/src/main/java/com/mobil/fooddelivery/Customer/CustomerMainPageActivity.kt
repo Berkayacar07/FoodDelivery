@@ -30,6 +30,17 @@ class CustomerMainPageActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
+        val intent = intent
+
+        when {
+            intent.getStringExtra("Activity") == "Go to others" -> {
+
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragmentCustomerContainerView, CustomerProfileFragment())
+                fragmentTransaction.commit()
+
+            }
+        }
     }
 
     private fun checkUser() {
@@ -57,7 +68,9 @@ class CustomerMainPageActivity : AppCompatActivity() {
         finish()
     }
     fun customerSearch(view: View){
-
+        val intent = Intent(applicationContext, CustomerSearchActivity::class.java)
+        startActivity(intent)
+        finish()
     }
     fun customerLine(view: View){
         val fragmentTransaction = supportFragmentManager.beginTransaction()

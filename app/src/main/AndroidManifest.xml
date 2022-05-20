@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDelivery">
         <activity
+            android:name=".Customer.CustomerSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.CustomerPaymentPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".Customer.CustomerCartActivity"
             android:exported="false" />
         <activity

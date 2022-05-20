@@ -4,6 +4,127 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DC8607"
     tools:context=".Customer.CustomerCartActivity">
+
+    <Button
+        android:id="@+id/customer_card_order_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="continueButton"
+        android:text="Continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewCartPage" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCartPage"
+        android:layout_width="411dp"
+        android:layout_height="518dp"
+        android:background="#DC8607"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <RadioButton
+        android:id="@+id/addressRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Address"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
+
+    <RadioButton
+        android:id="@+id/addressRadioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Address2"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.996">
+
+        <ImageView
+            android:id="@+id/customer_line"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="46dp"
+            android:onClick="customerLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/customer_basket"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_line"
+            tools:ignore="SpeakableTextPresentCheck"></ImageView>
+
+        <ImageView
+            android:id="@+id/customer_basket"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="customerBasket"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/customer_line"
+            app:layout_constraintStart_toEndOf="@+id/customer_search"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_basket"
+            tools:ignore="SpeakableTextPresentCheck"></ImageView>
+
+        <ImageView
+            android:id="@+id/customer_search"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginEnd="26dp"
+            android:onClick="customerSearch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/customer_basket"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_search"
+            tools:ignore="SpeakableTextPresentCheck"></ImageView>
+
+        <ImageView
+            android:id="@+id/customer_home"
+            android:layout_width="56dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="24dp"
+            android:onClick="customerHome"
+            app:layout_constraintEnd_toStartOf="@+id/customer_search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_home_24"
+            tools:ignore="SpeakableTextPresentCheck"></ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,23 @@
 package com.mobil.fooddelivery.Customer
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.mobil.fooddelivery.databinding.ActivityCustomerAddCartBinding
 import java.text.DecimalFormat
+import java.util.ArrayList
 
 class CustomerAddCartActivity : AppCompatActivity() {
 
@@ -22,6 +26,8 @@ class CustomerAddCartActivity : AppCompatActivity() {
     private lateinit var storage: FirebaseStorage
     private lateinit var database: DatabaseReference
     private var mStorageRef: StorageReference? = null
+    private lateinit var userID : String
+
 
     lateinit var name : String
     var price : Double = 0.0
@@ -36,13 +42,17 @@ class CustomerAddCartActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        userID = FirebaseAuth.getInstance().uid.toString()
         foodCount=1
 
         database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.com/")
 
+
         storage = FirebaseStorage.getInstance()
 
         mStorageRef = FirebaseStorage.getInstance().reference
+
+
 
         val intent = intent
         name = intent.getStringExtra("name").toString()
@@ -91,10 +101,58 @@ class CustomerAddCartActivity : AppCompatActivity() {
 
     fun addCart (view: View) {
         val intent = Intent(this, CustomerCartActivity::class.java)
-        intent.putExtra("name", name)
-        intent.putExtra("price", price.toString())
-        intent.putExtra("count", foodCount.toString())
-        intent.putExtra("category", category)
+
+        val food = FoodCart(name,price.toString(),foodCount.toString())
+
+        var list = ArrayList<FoodCart>()
+
+
+        database.child(userID).child("Carts").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(i in snapshot.children){
+
+                    val tempCount = i.child("foodCount").value
+                    val tempName = i.child("foodName").value
+                    val tempPrice = i.child("foodPrice").value
+                    list.add(FoodCart(tempName.toString(),tempPrice.toString(),tempCount.toString()))
+
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+
+        database.child(userID).addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                var x = false
+
+                for (i in list) {
+                    if (i.foodName == food.foodName){
+                        x = true
+                    }
+                }
+
+                if (x) {
+                    for (i in list) {
+                        if (i.foodName == food.foodName) {
+                            i.foodCount = (i.foodCount.toInt() + food.foodCount.toInt()).toString()
+                        }
+                    }
+                } else {
+                    list.add(food)
+                }
+
+                database.child(userID).child("Carts").removeValue()
+                database.child(userID).child("Carts").setValue(list)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+
         startActivity(intent)
         finish()
     }
