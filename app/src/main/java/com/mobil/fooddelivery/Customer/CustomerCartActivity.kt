@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -148,51 +149,58 @@ class CustomerCartActivity : AppCompatActivity() {
     fun continueButton(view: View){
 
         val selectedOption = binding.radioGroup.checkedRadioButtonId
+        println(selectedOption)
+        if(selectedOption==-1){
+            Toast.makeText(applicationContext,"Please choose address", Toast.LENGTH_SHORT).show()
+        }else {
 
-        var address = ""
-        var fullName = ""
-        var email = ""
-        var address1 = ""
-        var address2 = ""
+            var address = ""
+            var fullName = ""
+            var email = ""
+            var address1 = ""
+            var address2 = ""
 
 
-        val button: Button = binding.radioGroup.findViewById(selectedOption)
+            val button: Button = binding.radioGroup.findViewById(selectedOption)
 
-        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.com/")
-        database.child("Customer").addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (i in snapshot.children) {
+            database =
+                Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.com/")
+            database.child("Customer").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (i in snapshot.children) {
 
-                    fullName = i.key.toString()
-                    email = i.child("email").value.toString()
-                    address1 = i.child("address1").value.toString()
-                    address2 = i.child("address2").value.toString()
+                        fullName = i.key.toString()
+                        email = i.child("email").value.toString()
+                        address1 = i.child("address1").value.toString()
+                        address2 = i.child("address2").value.toString()
 
-                    if (firebaseAuth.currentUser?.email.toString() == email) {
-                        when (button.text) {
-                            "Address" -> {
-                                address = address1
+                        if (firebaseAuth.currentUser?.email.toString() == email) {
+                            when (button.text) {
+                                "Address" -> {
+                                    address = address1
+                                }
+                                "Address2" -> {
+                                    address = address2
+                                }
                             }
-                            "Address2" -> {
-                                address = address2
-                            }
+                            val intent =
+                                Intent(applicationContext, CustomerPaymentPageActivity::class.java)
+                            intent.putExtra("fullName", fullName)
+                            intent.putExtra("email", email)
+                            intent.putExtra("address", address)
+                            startActivity(intent)
+                            finish()
+                            break
                         }
-                        val intent = Intent(applicationContext, CustomerPaymentPageActivity::class.java)
-                        intent.putExtra("fullName",fullName)
-                        intent.putExtra("email",email)
-                        intent.putExtra("address",address)
-                        startActivity(intent)
-                        finish()
-                        break
+
                     }
-
                 }
-            }
 
 
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+        }
     }
 
 
