@@ -1,4 +1,5 @@
-#Food Delivery
+# Food Delivery
+
 ### Purpose of the project
 A restaurant can showcase their food. Customers can order food through the app.
 
