@@ -12,11 +12,12 @@
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2285" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_line.xml" value="0.2095" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/drawable/ic_search.xml" value="0.2095" />
-        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_add_cart.xml" value="0.2391304347826087" />
-        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_cart.xml" value="0.2" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_add_cart.xml" value="0.1" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_cart.xml" value="0.264" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_forgot_password.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_log_in.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_main_page.xml" value="0.1" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_orders_history.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_payment_page.xml" value="0.1" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_search.xml" value="0.2" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/activity_customer_sign_up.xml" value="0.2223731884057971" />
@@ -39,6 +40,7 @@
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/recycler_row_cart.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/recycler_row_customer_cart.xml" value="0.176" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/recycler_row_customer_food.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/recycler_row_customer_orders_history.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/layout/recycler_row_restaurant_food.xml" value="0.1" />
         <entry key="..\:/Users/ACAR/AndroidStudioProjects/FoodDelivery/FoodDelivery/app/src/main/res/menu/add_food.xml" value="0.25416666666666665" />
       </map>

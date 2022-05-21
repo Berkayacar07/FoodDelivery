@@ -56,7 +56,7 @@ class CustomerSearchActivity : AppCompatActivity() {
         })
         recyclerView = findViewById(R.id.recycler_view_search)
         recyclerView.hasFixedSize()
-        recyclerView.layoutManager=LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
 
         database =
@@ -97,40 +97,41 @@ class CustomerSearchActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun filterList(text: String?) {
-        var a =0
-        for(i in foodNameList){
-            if (i.equals(text)){
+        var a = 0
+        for (i in foodNameList) {
+            if (i == text) {
                 filteredList.add(i)
-                tempFoodCategoryList.add(foodCategoryList.get(a))
-                tempFoodPriceList.add(foodPriceList.get(a))
+                tempFoodCategoryList.add(foodCategoryList[a])
+                tempFoodPriceList.add(foodPriceList[a])
                 a++
             }
 
             a++
         }
-        if (filteredList.isEmpty()){
+        if (filteredList.isEmpty()) {
 
-        }else{
-            Toast.makeText(this,"Data found",Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Data found", Toast.LENGTH_SHORT).show()
             recyclerView.adapter =
                 CustomerSearchRecyclerAdapter(filteredList, tempFoodPriceList, tempFoodCategoryList)
         }
     }
 
-    fun dessert(view: View){
+    fun dessert(view: View) {
         filteredList.clear()
         tempFoodPriceList.clear()
         tempFoodCategoryList.clear()
         tempFoodPhotoList.clear()
         var a = 0
-        for (i in foodCategoryList){
-            if(i.equals("Dessert")) {
-                filteredList.add(foodNameList.get(a))
-                tempFoodCategoryList.add(foodCategoryList.get(a))
-                tempFoodPriceList.add(foodPriceList.get(a))
+        for (i in foodCategoryList) {
+            if (i == "Dessert") {
+                filteredList.add(foodNameList[a])
+                tempFoodCategoryList.add(foodCategoryList[a])
+                tempFoodPriceList.add(foodPriceList[a])
                 a++
-            }else{
+            } else {
                 a++
             }
             recyclerView.adapter =
@@ -138,19 +139,20 @@ class CustomerSearchActivity : AppCompatActivity() {
 
         }
     }
-    fun drink(view: View){
+
+    fun drink(view: View) {
         filteredList.clear()
         tempFoodPriceList.clear()
         tempFoodCategoryList.clear()
         tempFoodPhotoList.clear()
         var a = 0
-        for (i in foodCategoryList){
-            if(i.equals("Drink")) {
-                filteredList.add(foodNameList.get(a))
-                tempFoodCategoryList.add(foodCategoryList.get(a))
-                tempFoodPriceList.add(foodPriceList.get(a))
+        for (i in foodCategoryList) {
+            if (i == "Drink") {
+                filteredList.add(foodNameList[a])
+                tempFoodCategoryList.add(foodCategoryList[a])
+                tempFoodPriceList.add(foodPriceList[a])
                 a++
-            }else{
+            } else {
                 a++
             }
             recyclerView.adapter =
@@ -158,38 +160,40 @@ class CustomerSearchActivity : AppCompatActivity() {
         }
 
     }
-    fun mainCourse(view: View){
+
+    fun mainCourse(view: View) {
         filteredList.clear()
         tempFoodPriceList.clear()
         tempFoodCategoryList.clear()
         tempFoodPhotoList.clear()
         var a = 0
-        for (i in foodCategoryList){
-            if(i.equals("Main Course")) {
-                filteredList.add(foodNameList.get(a))
-                tempFoodCategoryList.add(foodCategoryList.get(a))
-                tempFoodPriceList.add(foodPriceList.get(a))
+        for (i in foodCategoryList) {
+            if (i == "Main Course") {
+                filteredList.add(foodNameList[a])
+                tempFoodCategoryList.add(foodCategoryList[a])
+                tempFoodPriceList.add(foodPriceList[a])
                 a++
-            }else{
+            } else {
                 a++
             }
             recyclerView.adapter =
                 CustomerSearchRecyclerAdapter(filteredList, tempFoodPriceList, tempFoodCategoryList)
         }
     }
-    fun soup(view: View){
+
+    fun soup(view: View) {
         filteredList.clear()
         tempFoodPriceList.clear()
         tempFoodCategoryList.clear()
         tempFoodPhotoList.clear()
         var a = 0
-        for (i in foodCategoryList){
-            if(i.equals("Soup")) {
-                filteredList.add(foodNameList.get(a))
-                tempFoodCategoryList.add(foodCategoryList.get(a))
-                tempFoodPriceList.add(foodPriceList.get(a))
+        for (i in foodCategoryList) {
+            if (i == "Soup") {
+                filteredList.add(foodNameList[a])
+                tempFoodCategoryList.add(foodCategoryList[a])
+                tempFoodPriceList.add(foodPriceList[a])
                 a++
-            }else{
+            } else {
                 a++
             }
             recyclerView.adapter =

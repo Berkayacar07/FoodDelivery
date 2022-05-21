@@ -11,7 +11,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.mobil.fooddelivery.Restaurant.RestaurantLogInActivity
-import com.mobil.fooddelivery.Restaurant.restaurantEmail
 import com.mobil.fooddelivery.databinding.ActivityCustomerLogInBinding
 
 class CustomerLogInActivity : AppCompatActivity() {
@@ -99,7 +98,7 @@ class CustomerLogInActivity : AppCompatActivity() {
         finish()
     }
 
-    fun mailControl (email : String) : Boolean {
+    private fun mailControl (email : String) : Boolean {
         return !Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 

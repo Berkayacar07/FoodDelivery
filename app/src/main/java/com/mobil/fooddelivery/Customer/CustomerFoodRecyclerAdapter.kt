@@ -1,5 +1,3 @@
-package com.mobil.fooddelivery.Customer
-
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.mobil.fooddelivery.Customer.CustomerAddCartActivity
 import com.mobil.fooddelivery.R
 import java.text.DecimalFormat
 
@@ -14,7 +13,7 @@ import java.text.DecimalFormat
 class CustomerFoodRecyclerAdapter(
     private var foodNameList: ArrayList<String>,
     private var foodPriceList: ArrayList<String>,
-    private var foodCategoryList: ArrayList<String>,
+    private var foodCategoryList: ArrayList<String>
 ):
     RecyclerView.Adapter<CustomerFoodRecyclerAdapter.FoodHolder>() {
 

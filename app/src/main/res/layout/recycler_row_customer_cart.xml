@@ -31,8 +31,8 @@
             android:text="-"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editText_cart_countOfFood"
+        <TextView
+            android:id="@+id/textView_cart_countOfFood"
             android:layout_width="53dp"
             android:layout_height="41dp"
             android:background="@drawable/button_background"

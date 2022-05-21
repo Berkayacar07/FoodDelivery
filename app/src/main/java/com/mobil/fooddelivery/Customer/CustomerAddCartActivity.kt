@@ -58,14 +58,13 @@ class CustomerAddCartActivity : AppCompatActivity() {
         name = intent.getStringExtra("name").toString()
         val tempPrice = intent.getStringExtra("price").toString()
         price = tempPrice.toDouble()
-        println(price)
         category = intent.getStringExtra("category").toString()
 
         val numberFormat = DecimalFormat.getCurrencyInstance()
         numberFormat.maximumFractionDigits = 2
 
-        binding.textViewCustomerAddArtFoodName.text = name
-        binding.textViewCustomerAddArtFoodPrice.text = numberFormat.format(price)
+        binding.textViewCustomerAddFoodFoodName.text = name
+        binding.textViewCustomerAddFoodFoodPrice.text = numberFormat.format(price)
 
         val photoId = storage.reference.child("images/$name.jpeg")
 
@@ -76,8 +75,21 @@ class CustomerAddCartActivity : AppCompatActivity() {
         }.addOnFailureListener {
             // Handle any errors
         }
+        checkUser()
 
+    }
 
+    private fun checkUser() {
+
+        val firebaseUser = firebaseAuth.currentUser
+
+        if(firebaseUser != null) {
+
+            val email = firebaseUser.email
+        }else {
+            startActivity(Intent(this,CustomerLogInActivity::class.java))
+            finish()
+        }
     }
 
     fun plusFood (view: View) {
@@ -95,12 +107,12 @@ class CustomerAddCartActivity : AppCompatActivity() {
     private fun update () {
         val numberFormat = DecimalFormat.getCurrencyInstance()
         numberFormat.maximumFractionDigits = 2
-        binding.textViewCustomerAddArtFoodPrice.text = numberFormat.format((price*foodCount))
-        binding.editTextCountOfFood.setText(foodCount.toString())
+        binding.textViewCustomerAddFoodFoodPrice.text = numberFormat.format((price*foodCount))
+        binding.textViewCountOfFood.text = foodCount.toString()
     }
 
     fun addCart (view: View) {
-        val intent = Intent(this, CustomerCartActivity::class.java)
+        val intent = Intent(this, CustomerMainPageActivity::class.java)
 
         val food = FoodCart(name,price.toString(),foodCount.toString())
 

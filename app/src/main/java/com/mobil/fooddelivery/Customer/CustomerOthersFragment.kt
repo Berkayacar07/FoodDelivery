@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.mobil.fooddelivery.R
-import com.mobil.fooddelivery.Restaurant.RestaurantProfileFragment
 import com.mobil.fooddelivery.databinding.FragmentCustomerOthersBinding
 
 
@@ -43,9 +42,11 @@ class CustomerOthersFragment : Fragment() {
         binding.customerLogOutButton.setOnClickListener {
             customerLogOutOnClick(it)
         }
+
+
     }
 
-    fun customerProfileOnClick (view:View){
+    private fun customerProfileOnClick (view:View){
         val fragment2 = CustomerProfileFragment()
         val fragmentManager = fragmentManager
         val fragmentTransaction = fragmentManager!!.beginTransaction()
@@ -53,18 +54,21 @@ class CustomerOthersFragment : Fragment() {
         fragmentTransaction.commit()
 
     }
-    fun customerAddressOnClick(view: View){
+    private fun customerAddressOnClick(view: View){
         val fragment2 = CustomerAddressFragment()
         val fragmentManager = fragmentManager
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentCustomerContainerView, fragment2)
         fragmentTransaction.commit()
     }
-    fun customerOrdersHistoryOnClick(view: View){
-
+    private fun customerOrdersHistoryOnClick(view: View){
+        activity?.let{
+            val intent = Intent(it, CustomerOrdersHistoryActivity::class.java)
+            it.startActivity(intent)
+        }
     }
 
-    fun customerLogOutOnClick(view: View){
+    private fun customerLogOutOnClick(view: View){
         activity?.let{
             firebaseAuth.signOut()
             val intent = Intent(it, CustomerLogInActivity::class.java)

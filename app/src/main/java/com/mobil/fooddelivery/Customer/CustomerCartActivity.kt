@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,10 @@ class CustomerCartActivity : AppCompatActivity() {
     private var mStorageRef: StorageReference? = null
     private lateinit var userID : String
     private lateinit var recyclerView : RecyclerView
+    private var foodList = ArrayList<FoodCart>()
+
+    private var totalPrice = 0.0
+    var list = ArrayList<FoodCart>()
 
 
 
@@ -53,9 +58,9 @@ class CustomerCartActivity : AppCompatActivity() {
         val numberFormat = DecimalFormat.getCurrencyInstance()
         numberFormat.maximumFractionDigits = 2
 
-        val list = ArrayList<FoodCart>()
 
-        recyclerView = binding.recyclerViewCartPage
+
+        recyclerView = binding.recyclerViewCustomerCartPage
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
         recyclerView.addItemDecoration(
@@ -74,10 +79,15 @@ class CustomerCartActivity : AppCompatActivity() {
                     val tempCount = i.child("foodCount").value
                     val tempName = i.child("foodName").value
                     val tempPrice = i.child("foodPrice").value
-                    println(tempName.toString() + " " + " " + tempCount.toString()+ "      "+ tempPrice.toString())
                     list.add(FoodCart(tempName.toString(),tempPrice.toString(),tempCount.toString()))
+                    foodList = list
                     x++
                     if (x == snapshot.childrenCount.toInt()) {
+                        for (i in list) {
+                            totalPrice += (i.foodPrice.toDouble()) * (i.foodCount.toInt())
+                        }
+                        val numberFormat = DecimalFormat.getCurrencyInstance()
+                        numberFormat.maximumFractionDigits = 2
                         recyclerView.adapter =
                             CustomerCartRecyclerAdapter(list)
                     }
@@ -88,15 +98,8 @@ class CustomerCartActivity : AppCompatActivity() {
             }
         })
 
-
-
-
-
-
-
-
-
     }
+
 
     private fun checkUser() {
 
@@ -109,6 +112,13 @@ class CustomerCartActivity : AppCompatActivity() {
             startActivity(Intent(this,CustomerLogInActivity::class.java))
             finish()
         }
+    }
+
+    fun removeCart (view: View) {
+        database.child(userID).child("Carts").removeValue()
+        val intent = Intent(applicationContext, CustomerMainPageActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     fun customerHome(view: View){
@@ -126,16 +136,64 @@ class CustomerCartActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-    fun continueButton(view: View){
-        val intent = Intent(applicationContext, CustomerPaymentPageActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
+
     fun customerLine(view: View){
         val intent = Intent(applicationContext, CustomerMainPageActivity::class.java)
-        intent.putExtra("Activity", "Go to others")
+        intent.putExtra("Activity","Go to others")
         startActivity(intent)
         finish()
     }
+
+
+    fun continueButton(view: View){
+
+        val selectedOption = binding.radioGroup.checkedRadioButtonId
+
+        var address = ""
+        var fullName = ""
+        var email = ""
+        var address1 = ""
+        var address2 = ""
+
+
+        val button: Button = binding.radioGroup.findViewById(selectedOption)
+
+        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.com/")
+        database.child("Customer").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (i in snapshot.children) {
+
+                    fullName = i.key.toString()
+                    email = i.child("email").value.toString()
+                    address1 = i.child("address1").value.toString()
+                    address2 = i.child("address2").value.toString()
+
+                    if (firebaseAuth.currentUser?.email.toString() == email) {
+                        when (button.text) {
+                            "Address" -> {
+                                address = address1
+                            }
+                            "Address2" -> {
+                                address = address2
+                            }
+                        }
+                        val intent = Intent(applicationContext, CustomerPaymentPageActivity::class.java)
+                        intent.putExtra("fullName",fullName)
+                        intent.putExtra("email",email)
+                        intent.putExtra("address",address)
+                        startActivity(intent)
+                        finish()
+                        break
+                    }
+
+                }
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+    }
+
 
 }

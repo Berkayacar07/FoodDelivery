@@ -24,23 +24,25 @@ class CustomerMainPageActivity : AppCompatActivity() {
         binding = ActivityCustomerMainPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        actionBar = supportActionBar!!
-        actionBar.title = "Foods"
-
-        firebaseAuth = FirebaseAuth.getInstance()
-        checkUser()
-
         val intent = intent
 
         when {
             intent.getStringExtra("Activity") == "Go to others" -> {
 
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.fragmentCustomerContainerView, CustomerProfileFragment())
+                fragmentTransaction.replace(R.id.fragmentCustomerContainerView, CustomerOthersFragment())
                 fragmentTransaction.commit()
 
             }
         }
+
+
+        actionBar = supportActionBar!!
+        actionBar.title = "Foods"
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        checkUser()
+
     }
 
     private fun checkUser() {
