@@ -40,7 +40,7 @@ class CustomerOrdersHistoryActivity : AppCompatActivity() {
 
         checkUser()
 
-        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-51f56-default-rtdb.firebaseio.com/")
+        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.com/")
 
         userID = FirebaseAuth.getInstance().uid.toString()
 

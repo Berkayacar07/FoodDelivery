@@ -54,7 +54,7 @@ class CustomerPaymentPageActivity : AppCompatActivity() {
         userID = FirebaseAuth.getInstance().uid.toString()
         foodCount=0
 
-        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-51f56-default-rtdb.firebaseio.com/")
+        database = Firebase.database.getReferenceFromUrl("https://fooddelivery-847b7-default-rtdb.firebaseio.com/")
 
 
         setContentView(binding.root)
