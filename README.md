@@ -20,4 +20,4 @@ A restaurant can showcase their food. Customers can order food through the app.
 https://user-images.githubusercontent.com/86426656/171611093-9d1119a7-bcc4-463e-825e-39de8853383c.mp4
 
 
-
+ 
